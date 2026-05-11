@@ -1,0 +1,209 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+:root {
+  color-scheme: light;
+}
+
+:root.dark {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-slate-100 text-slate-800 antialiased;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
+}
+
+.dark body {
+  @apply bg-slate-950 text-slate-100;
+}
+
+.app-shell {
+  @apply relative min-h-full overflow-hidden;
+}
+
+.app-shell::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 12% 14%, rgba(104, 137, 197, 0.18), transparent 44%),
+    radial-gradient(circle at 88% 8%, rgba(56, 189, 248, 0.12), transparent 38%),
+    radial-gradient(circle at 55% 85%, rgba(59, 130, 246, 0.1), transparent 42%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-title {
+  @apply text-2xl font-semibold tracking-tight text-slate-900 dark:text-slate-100;
+}
+
+.section-subtitle {
+  @apply mt-1 text-sm text-slate-500 dark:text-slate-400;
+}
+
+.surface-card {
+  @apply rounded-2xl border border-white/60 bg-white/80 shadow-sm backdrop-blur dark:border-slate-800 dark:bg-slate-900/70;
+}
+
+.metric-card {
+  @apply surface-card p-4 md:p-5;
+}
+
+.metric-value {
+  @apply mt-2 text-3xl font-semibold text-slate-900 dark:text-slate-100;
+}
+
+.metric-label {
+  @apply text-sm font-medium text-slate-500 dark:text-slate-400;
+}
+
+.table-shell {
+  @apply surface-card overflow-hidden;
+}
+
+.table-shell .p-datatable .p-datatable-thead > tr > th {
+  @apply bg-slate-100/80 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:bg-slate-800/80 dark:text-slate-300;
+}
+
+.table-shell .p-datatable .p-datatable-tbody > tr > td {
+  @apply py-3 text-sm;
+}
+
+.table-shell .p-datatable .p-datatable-tbody > tr {
+  @apply hover:bg-brand-50/40 dark:hover:bg-slate-800/50;
+}
+
+.glass-pill {
+  @apply rounded-full border border-slate-200 bg-white/70 px-3 py-1 text-xs font-medium text-slate-600 dark:border-slate-700 dark:bg-slate-800/70 dark:text-slate-300;
+}
+
+.product-create-dialog .p-dialog-content {
+  @apply space-y-4 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-900/95;
+}
+
+.product-create-dialog .p-dialog-header,
+.user-create-dialog .p-dialog-header {
+  @apply border-b border-slate-200/80 bg-white/90 backdrop-blur dark:border-slate-700/80 dark:bg-slate-900/90;
+}
+
+.product-dialog-hero {
+  @apply mb-4 flex items-start gap-3 rounded-2xl border border-brand-100 bg-brand-50/70 p-4 dark:border-brand-500/20 dark:bg-brand-500/10;
+}
+
+.product-dialog-icon {
+  @apply grid h-10 w-10 place-items-center rounded-xl bg-brand-600 text-white shadow-sm;
+}
+
+.product-dialog-title {
+  @apply text-sm font-semibold text-slate-800 dark:text-slate-100;
+}
+
+.product-dialog-subtitle {
+  @apply mt-1 text-xs text-slate-500 dark:text-slate-400;
+}
+
+.product-dialog-section {
+  @apply space-y-3 rounded-2xl border border-slate-200/80 bg-white/90 p-4 shadow-sm dark:border-slate-700 dark:bg-slate-800/70;
+}
+
+.product-field-label {
+  @apply text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-300;
+}
+
+.product-create-dialog .p-inputtext,
+.product-create-dialog .p-dropdown,
+.product-create-dialog .p-inputnumber-input,
+.user-create-dialog .p-inputtext,
+.user-create-dialog .p-dropdown,
+.user-create-dialog .p-inputnumber-input,
+.user-create-dialog .p-password-input {
+  @apply w-full rounded-xl border border-slate-300 bg-white text-slate-800 shadow-sm transition duration-150 focus:border-brand-500 focus:ring-2 focus:ring-brand-200/80 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 dark:focus:border-brand-400 dark:focus:ring-brand-500/20;
+}
+
+.product-create-dialog .p-dropdown .p-dropdown-label {
+  @apply pl-4 text-slate-700 dark:text-slate-100;
+}
+
+.product-create-dialog .p-inputtext,
+.product-create-dialog .p-inputnumber-input {
+  @apply pl-4;
+}
+
+.user-create-dialog .p-inputtext,
+.user-create-dialog .p-inputnumber-input,
+.user-create-dialog .p-password-input {
+  @apply pl-4;
+}
+
+.product-create-dialog .p-dialog-footer,
+.user-create-dialog .p-dialog-footer {
+  @apply border-t border-slate-200/80 bg-white/80 pt-4 dark:border-slate-700/80 dark:bg-slate-900/85;
+}
+
+.product-dialog-footer {
+  @apply flex w-full items-center justify-end gap-2;
+}
+
+.product-dialog-footer .product-btn {
+  @apply min-w-[10rem] rounded-xl px-4 py-2 text-sm font-semibold transition duration-150;
+}
+
+.product-dialog-footer .product-btn .p-button-icon {
+  @apply text-xs;
+}
+
+.product-dialog-footer .product-btn-cancel {
+  @apply border border-slate-300 bg-white text-slate-700 hover:border-slate-400 hover:bg-slate-100 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-slate-500 dark:hover:bg-slate-700;
+}
+
+.product-dialog-footer .product-btn-save {
+  @apply border border-brand-500 bg-brand-600 text-white shadow-md shadow-brand-500/25 hover:border-brand-600 hover:bg-brand-700 hover:shadow-lg hover:shadow-brand-600/30 dark:border-brand-400 dark:bg-brand-500 dark:hover:bg-brand-400;
+}
+
+.quick-category-row {
+  @apply flex items-center gap-2;
+}
+
+.product-create-dialog .product-btn-add-category {
+  @apply min-w-[10rem] rounded-xl border-0 bg-gradient-to-r from-emerald-500 to-teal-500 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-emerald-500/30 transition duration-200 hover:-translate-y-0.5 hover:from-emerald-600 hover:to-teal-600 hover:shadow-lg hover:shadow-emerald-500/40 focus:ring-2 focus:ring-emerald-300/80 dark:from-emerald-500 dark:to-teal-500 dark:hover:from-emerald-400 dark:hover:to-teal-400;
+}
+
+.product-create-dialog .product-btn-add-category .p-button-icon {
+  @apply text-xs;
+}
+
+.user-create-dialog .p-dialog-content {
+  @apply space-y-4 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-900/95;
+}
+
+.user-dialog-hero {
+  @apply mb-4 flex items-start gap-3 rounded-2xl border border-indigo-100 bg-indigo-50/70 p-4 dark:border-indigo-500/20 dark:bg-indigo-500/10;
+}
+
+.user-dialog-icon {
+  @apply grid h-10 w-10 place-items-center rounded-xl bg-indigo-600 text-white shadow-sm;
+}
+
+.user-dialog-title {
+  @apply text-sm font-semibold text-slate-800 dark:text-slate-100;
+}
+
+.user-dialog-subtitle {
+  @apply mt-1 text-xs text-slate-500 dark:text-slate-400;
+}
+
+.user-dialog-section {
+  @apply space-y-3 rounded-2xl border border-slate-200/80 bg-white/90 p-4 shadow-sm dark:border-slate-700 dark:bg-slate-800/70;
+}
+
+.user-field-label {
+  @apply text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-300;
+}

@@ -1,0 +1,40 @@
+services:
+  sql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "YourStrong!Passw0rd"
+    ports:
+      - "1433:1433"
+    volumes:
+      - wms_sql:/var/opt/mssql
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - sql
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ConnectionStrings__DefaultConnection: "Server=sql,1433;Database=WarehouseManagement;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=True;MultipleActiveResultSets=true"
+      Jwt__Secret: "PLEASE_REPLACE_WITH_A_LONG_RANDOM_SECRET_KEY_MINIMUM_32_CHARS"
+      Jwt__Issuer: "WarehouseManagement.API"
+      Jwt__Audience: "WarehouseManagement.Client"
+      Jwt__AccessTokenMinutes: "60"
+      Jwt__RefreshTokenDays: "14"
+      Cors__AllowedOrigins__0: "http://localhost:8081"
+    ports:
+      - "8080:8080"
+
+  web:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    depends_on:
+      - api
+    ports:
+      - "8081:80"
+
+volumes:
+  wms_sql:
